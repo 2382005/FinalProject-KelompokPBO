@@ -23,19 +23,25 @@ public class Database {
 
     // Mendapatkan koneksi
     public Connection getConnection() {
+        try {
+            if (connection == null || connection.isClosed()) {
+                String mysqlConnUrlTemplate = "jdbc:mysql://%s:%s/%s";
+                connection = DriverManager.getConnection(String.format(mysqlConnUrlTemplate, host, port, dbName), userName, password);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return connection;
     }
 
     // Metode untuk mengatur koneksi ke database
     public void setup() {
-        String mysqlConnUrlTemplate = "jdbc:mysql://%s:%s/%s";
         try {
-            // Memastikan driver JDBC dimuat
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Gunakan "com.mysql.cj.jdbc.Driver" untuk versi terbaru
-            connection = DriverManager.getConnection(String.format(mysqlConnUrlTemplate, host, port, dbName), userName, password);
+            Class.forName("com.mysql.jdbc.Driver");
+            getConnection(); // Memastikan koneksi dibuka saat setup
             System.out.println("Database connected!");
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

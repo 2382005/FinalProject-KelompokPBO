@@ -1,49 +1,27 @@
 package dormapp.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Event {
     private int id;
     private String name;
-    private String description;
-    private Date date;
+    private LocalDateTime eventDate;
 
-    public Event(int id, String name, String description, Date date) {
+    public Event(int id, String name, LocalDateTime eventDate) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.date = date;
+        this.eventDate = eventDate;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public LocalDateTime getEventDate() {
+        return eventDate;
     }
 }

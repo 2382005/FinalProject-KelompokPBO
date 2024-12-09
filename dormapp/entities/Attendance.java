@@ -1,47 +1,27 @@
 package dormapp.entities;
 
+import java.time.LocalDateTime;
+
 public class Attendance {
     private int id;
     private int userId;
-    private int eventId;
-    private boolean isPresent;
+    private LocalDateTime timestamp;
 
-    public Attendance(int id, int userId, int eventId, boolean isPresent) {
+    public Attendance(int id, int userId, LocalDateTime timestamp) {
         this.id = id;
         this.userId = userId;
-        this.eventId = eventId;
-        this.isPresent = isPresent;
+        this.timestamp = timestamp;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
-    }
-
-    public boolean isPresent() {
-        return isPresent;
-    }
-
-    public void setPresent(boolean present) {
-        isPresent = present;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 }
